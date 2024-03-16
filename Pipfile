@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+torch = {extras = ["cuda"], version = "*"}
+numpy = "*"
+torchvision = "*"
+lightning = {extras = ["extra"], version = "*"}
+fastapi = "*"
+maturin = "==1.1.0"
+jsonargparse = "*"
+matplotlib = "*"
+tensorboard = "*"
+scipy = "*"
+
+[dev-packages]
+
+[scripts]
+fit            = "python main.py fit"
+test           = "python main.py test"
+pvar-install   = "maturin develop -rvm pvar/Cargo.toml --strip"
+pvar-test      = "python test.py"
+resnet_cifar10 = "python resnet_cifar10.py"
+norm_path      = "python norm.py"
+ll-vis         = "python visualization.py --visualize=true --surface_path"
+ll-render      = "python visualization.py --steps=100"
+curve-fit      = "python curve_fit_avg_grad.py"
+path-norm      = "python path_norm.py"
+path-weights   = "python path_weights.py"

@@ -1,0 +1,3 @@
+[submodule "pvar"]
+	path = pvar
+	url = https://github.com/ntapiam/rust-pvar.git
