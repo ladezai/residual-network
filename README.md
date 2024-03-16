@@ -1,6 +1,6 @@
 # Weights regularity for Residual Neural Networks in the depth limit
 
-This is the companion code for the thesis *Weights regularity for residual
+Companion code for the thesis *Weights regularity for residual
 neural networks in the depth limit*. 
 
 ## Installation 
@@ -23,7 +23,7 @@ description of the modules:
 * SinDataModule: a synthetic dataset given by couples of points $(x, \sin(x))$ with
   $x \in [-1,1]$. The parameter $c$ determines the separability condition of the
   input data, namely 
-  $$ |\langle x_i, x_j\rangle| \le \frac{e^{-4c}}{{8N}}$$
+  $$ |< x_i, x_j>| \le \frac{e^{-4c}}{{8N}}$$
   to be similar to the Assumption (iii) [[1]](#1).
 * ConstantDataModule: a synthetic dataset given by couples of points $(x, c)$ with
   uniformly sampled in the range $[-1,1]$ and $c$ being a parameter of the
@@ -50,7 +50,7 @@ We give a brief description of the hyper-parameters for the models:
 * `gamma`: parameter describing the scale of the initialization.
 * `dim`: dimension of the hidden state of the neural network. 
 * `input_size`: input dimension used to compute the embedding of the weights
-  $U_\text{in}$. 
+  $U_\text{in}$ only for ClassificationModel. 
 * `classes`: if the model is an instance of ClassificationModel, represents the
   size of the output.
 * `lr`: learning rate.
@@ -107,11 +107,7 @@ pipenv run fit --model=ClassificationModel --data=CIFAR10DataModule --model.L=10
 
 Training with respect to the regression task on the Constant dataset.
 ```{bash}
-pipenv run fit --model=RegressionModel --data=ConstantDataModule --model.L=128
---model.gamma=1.0 --trainer.max_epochs=25 --data.num_workers=12  --model.lr=9.0
---model.p_var=2.0 --model.init=constant --model.dim=1 --model.alpha=0.75
---model.p_loss=2.0 --data.num_samples=10_000 --data.batch_size=10_000
---seed_everything=1234 --trainer.default_root_dir=/path/to/model-128
+pipenv run fit --model=RegressionModel --data=ConstantDataModule --model.L=128 --model.gamma=1.0 --trainer.max_epochs=25 --data.num_workers=12  --model.lr=9.0 --model.p_var=2.0 --model.init=constant --model.dim=1 --model.alpha=0.75 --model.p_loss=2.0 --data.num_samples=10_000 --data.batch_size=10_000 --seed_everything=1234 --trainer.default_root_dir=/path/to/model-128
 ```
 
 ### resnet_cifa10.py
@@ -206,5 +202,6 @@ Description of the parameters:
 
 <a id="#1">[1]</a> Rama Cont, Alain Rossier, and RenYuan Xu. *"Convergence and
 Implicit Regularization Properties of Gradient Descent for Deep Residual
-Networks."* 2023. 
+Networks."* 2023.        
+
 <a id="#2">[2]</a> Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. *"Deep Residual Learning for Image Recognition"*. In: *2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*. 2016, pp. 770-778.
