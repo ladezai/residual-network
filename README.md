@@ -23,7 +23,7 @@ description of the modules:
 * SinDataModule: a synthetic dataset given by couples of points $(x, \sin(x))$ with
   $x \in [-1,1]$. The parameter $c$ determines the separability condition of the
   input data, namely 
-  $$ |< x_i, x_j>| \le \frac{e^{-4c}}{{8N}}$$
+  $$ | \langle x_i, x_j \rangle| \le \frac{e^{-4c}}{8N}$$
   to be similar to the Assumption (iii) [[1]](#1).
 * ConstantDataModule: a synthetic dataset given by couples of points $(x, c)$ with
   uniformly sampled in the range $[-1,1]$ and $c$ being a parameter of the
